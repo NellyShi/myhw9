@@ -113,6 +113,35 @@ public class RadioTest {
     }
 
     @Test
+    void increaseChannelByGivenCountOutOfRangeTest() {
+        Radio radio = new Radio(40);
+        radio.setRadioСhannel(39);
+        radio.nextChannel();
+        int expected = 0;
+        int actual = radio.getRadioСhannel();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void decreaseChannelByGivenCountOutOfRangeTest() {
+        Radio radio = new Radio(40);
+        radio.setRadioСhannel(0);
+        radio.prevChannel();
+        int expected = 39;
+        int actual = radio.getRadioСhannel();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void setRadioChannelByGivenCountOutOfRangeRightTest() {
+        Radio radio = new Radio(40);
+        radio.setRadioСhannel(40);
+        int expected = 39;
+        int actual = radio.getRadioСhannel();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     void setSoundVolumeTest() {
         Radio radio = new Radio();
         radio.setSoundVolume(6);
